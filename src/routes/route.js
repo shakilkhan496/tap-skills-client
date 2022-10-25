@@ -4,6 +4,8 @@ import Login from "../components/Login/Login";
 import RightSideNav from "../components/RightSideNav/RightSideNav";
 import SignUp from "../components/SignUp/SignUp";
 import Main from "../layout/Main";
+import NotFoundPage from "../pages/404NotFoundPage/NotFoundPage";
+import Blogs from "../pages/Blogs/Blogs";
 import CheckOut from "../pages/CheckOut/CheckOut";
 import Courses from "../pages/Courses/Courses";
 import Home from "../pages/Home/Home";
@@ -12,6 +14,7 @@ export const router = createBrowserRouter([
     {
 
         path: '/',
+        errorElement: <NotFoundPage></NotFoundPage>,
         element: <Main></Main>,
         children: [
             {
@@ -40,6 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/blog',
+                element: <Blogs></Blogs>
             }
 
         ]

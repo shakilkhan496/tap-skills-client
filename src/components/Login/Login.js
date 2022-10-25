@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import google from '../../assets/logo/google-svgrepo-com.svg';
+import git from '../../assets/logo/github-svgrepo-com.svg'
 
 const Login = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
@@ -9,18 +19,18 @@ const Login = () => {
                     <h1 className="text-5xl font-bold">Login here</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div className="card-body">
+                    <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" />
+                            <input name='email' type="email" placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" />
+                            <input name='password' type="password" placeholder="password" className="input input-bordered" />
 
                         </div>
                         <div>
@@ -29,7 +39,15 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-warning">Login</button>
                         </div>
-                    </div>
+                        <hr />
+                        <p className='text-center'>Or</p>
+                        <div>
+                            <button className='btn btn-primary ml-4 btn-outline'>Sign in with Google <img className='w-9 ml-3' src={google} alt='google' /> </button>
+                        </div>
+                        <div>
+                            <button className='btn ml-5 mt-3 btn-outline'>Sign in with GitHub <img className='w-9 ml-3' src={git} alt='google' /> </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
                     <p className="py-6">Learn every skills with your best practice. Don't lose your hope . Always remember that <br />
                         Success is never achieved without hard work . So guys let's focus your work and be active.</p>
                     <p className='mt-3 mb-3'>"Work like a hell - Bill Gates"</p>
-                    <button className="btn bg-amber-500 rounded-full text-2xl  lg:w-60 lg:h-20">Get Started</button>
+                    <Link to='/courses' className="btn bg-amber-500 rounded-full text-2xl  lg:w-60 lg:h-20">Get Started</Link>
                 </div>
             </div>
         </div>
