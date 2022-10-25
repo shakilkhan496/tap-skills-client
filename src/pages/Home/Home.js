@@ -7,7 +7,7 @@ const Home = () => {
     console.log(user);
     return (
         <div>
-            Home
+            This is home
         </div>
     );
 };
