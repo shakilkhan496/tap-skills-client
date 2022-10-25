@@ -7,7 +7,7 @@ const Home = () => {
     console.log(user);
     return (
         <div>
-            This is home
+            this is git checking home
         </div>
     );
 };
