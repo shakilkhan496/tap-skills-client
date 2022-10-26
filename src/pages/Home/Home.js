@@ -1,11 +1,8 @@
 import React from 'react';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider';
 
 const Home = () => {
-    const { user } = useContext(AuthContext);
-    console.log(user);
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">

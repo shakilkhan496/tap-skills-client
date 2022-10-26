@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Transition } from "@headlessui/react";
 import logo from '../../assets/icon.jpg'
 import { useContext } from 'react';
@@ -7,11 +7,20 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
     const [mood, setMood] = useState(false);
 
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                // alert
+            })
+            .catch((e) => {
+                console.error(e);
+            })
 
+    }
     const handleMood = () => {
         setMood(!mood);
     }
@@ -36,7 +45,7 @@ const Header = () => {
                                 </NavLink>
                             </div>
                             <div className="hidden md:block ml-96">
-                                <div className="ml-10 flex items-baseline space-x-4">
+                                <div className="ml-10 flex items-center space-x-4">
 
 
                                     <NavLink to='courses'
@@ -59,7 +68,14 @@ const Header = () => {
                                         Blog
                                     </NavLink>
                                     {
-                                        !user?.name ? <>
+                                        user?.uid ? <><div className='flex items-center space-x-3'>
+                                            <div className="tooltip  tooltip-bottom" data-tip={user.displayName}>
+                                                <img className='w-10  rounded-full' src={user.photoURL} alt='name' />
+                                            </div>
+                                            <div>
+                                                <button onClick={handleLogout} className=' p-2 rounded-xl text-white font-semibold transition bg-red-500 btn-outline'>Log out</button>
+                                            </div>
+                                        </div>
                                         </> :
                                             <NavLink to='/login'
 
@@ -159,6 +175,31 @@ const Header = () => {
                                 >
                                     blog
                                 </NavLink>
+
+                                {
+                                    user?.uid ? <><div className='flex items-center space-x-3'>
+                                        <div className="tooltip  tooltip-bottom" data-tip={user.displayName}>
+                                            <img className='w-10  rounded-full' src={user.photoURL} alt='name' />
+                                        </div>
+                                        <div>
+                                            <button onClick={handleLogout} className=' p-2 rounded-xl text-white font-semibold transition bg-red-500 btn-outline'>Log out</button>
+                                        </div>
+                                    </div>
+                                    </> :
+                                        <NavLink to='/login'
+
+                                            className={({ isActive }) => isActive ? ' bg-amber-700 text-white px-3 py-2 rounded-md text-sm font-medium' : 'hover:bg-amber-500 hover:scale-125 transition hover:text-white px-3 py-2 rounded-md text-sm font-medium'}
+                                        >
+                                            Login
+                                        </NavLink>
+                                }
+
+
+                                <button className='bg-transparent transition  hover:bg-amber-500 font-semibold hover:text-white py-2 px-4 border border-amber-500 hover:border-transparent rounded' onClick={handleMood}>
+                                    {
+                                        mood ? 'Dark' : 'Light'
+                                    }
+                                </button>
 
 
 

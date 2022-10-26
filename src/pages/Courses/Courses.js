@@ -1,6 +1,5 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import AllCategoriesCard from '../../components/AllCategoriesCard/AllCategoriesCard';
 import LeftSideNav from '../../components/LeftSideNav/LeftSideNav';
 import { AuthContext } from '../../contexts/AuthProvider';
